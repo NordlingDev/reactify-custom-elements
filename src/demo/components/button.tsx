@@ -10,14 +10,12 @@ export interface ButtonProps {
     onPress?: (event: Event & { target: NDButtonElement }) => void;
 }
 
-export const Button = createComponent<typeof NDButtonElement, ButtonProps>(
-    "nd-button",
-    NDButtonElement,
-    {
-        forwardRef: true,
-        mapKeys: (key) => key === "className" ? "test" : key,
-    }
-);
+window.customElements.define("nd-button", NDButtonElement);
+
+export const Button = createComponent<NDButtonElement, ButtonProps>("nd-button", {
+    forwardRef: true,
+    // mapPropName: (key) => key === "className" ? "test" : key,
+});
 
 /*export const Button = React.forwardRef<NDButtonElement, ButtonProps>((props, ref) => {
     const [element, elementRef] = useElement("nd-input", NDButtonElement, props);
