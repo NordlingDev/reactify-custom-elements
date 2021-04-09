@@ -3,24 +3,19 @@ import * as React from "react";
 import { RCEOptions } from "./options";
 import { useCategorizedProps } from "./useCategorizedProps";
 
-export const useCustomElement = <
-    ElementConstructor extends typeof HTMLElement,
-    ElementProps extends {} = {}
->(
-    name: string,
-    elementConstructor: ElementConstructor,
-    elementProps?: ElementProps,
+/**
+ * A hook that returns an instance of a custom element.
+ * @param elementName string
+ * @param elementProps Object
+ * @param options Object
+ * @returns HTMLElement
+ */
+export const useCustomElement = <E extends HTMLElement = HTMLElement, P extends {} = {}>(
+    elementName: string,
+    elementProps?: P,
     options: RCEOptions = {}
-) : [element: React.ReactElement, ref: React.MutableRefObject<ElementConstructor["prototype"] | null>] => {
-    const registryElement = customElements.get(name);
-
-    if(!registryElement) {
-        customElements.define(name, elementConstructor);
-    } else if(registryElement !== elementConstructor) {
-        throw new Error(`Element with name "${name}" is already registered.`);
-    }
-
-    const elementRef = React.useRef<ElementConstructor["prototype"] | null>(null);
+) : [element: React.ReactElement, ref: React.MutableRefObject<E | null>] => {
+    const elementRef = React.useRef<E | null>(null);
     const initialPropsRef = React.useRef<Record<string, unknown> | null>(null);
     const { attrs, children, events, props, style } = useCategorizedProps(elementProps || {}, options);
 
@@ -80,7 +75,7 @@ export const useCustomElement = <
     }, [elementRef, initialPropsRef, props]);
 
     return [
-        React.createElement(name, { ...attrs, style, ref: elementRef }, children),
+        React.createElement(elementName, { ...attrs, style, ref: elementRef }, children),
         elementRef
     ];
 };

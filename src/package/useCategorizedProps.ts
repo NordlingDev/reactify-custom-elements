@@ -67,7 +67,7 @@ export const useCategorizedProps = <P extends Props>(elementProps: P, globalOpti
     const newProps: Props = {};
 
     for(const originalKey in elementProps) {
-        const key = globalOptions.mapKeys?.(originalKey) ?? originalKey;
+        const key = globalOptions.mapPropName?.(originalKey) ?? originalKey;
         const value = elementProps[originalKey];
         const category = categorizeProp(key, value);
         
