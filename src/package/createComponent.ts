@@ -13,7 +13,7 @@ export const createComponent = <E extends HTMLElement = HTMLElement, P extends {
     elementName: string,
     options: RCEOptions = { forwardRef: false }
 ) => {
-    if(options.forwardRef === true) {
+    if(options.forwardRef) {
         return React.forwardRef<E, P>((props, ref) => {
             const [element, elementRef] = useCustomElement<E, P>(elementName, props, options);
 
