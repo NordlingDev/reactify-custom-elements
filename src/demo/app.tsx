@@ -3,7 +3,7 @@ import "./styles.css";
 
 import * as components from "./components";
 
-export const App: React.FC = () => {
+export const App = () => {
     const [clickCount, setClickCount] = React.useState<number>(0);
     const onClick = React.useCallback(() => setClickCount((c) => c + 1), []);
 
