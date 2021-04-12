@@ -54,15 +54,6 @@ function App() {
 
 # API
 
-## Options
-
-| Property | Type | Default Value | Description |
-| -------- | ---- | ------------- | ----------- |
-| forwardRef | `boolean` | false | Forward the element instance ref. This is false by default in case the ref is never going to be used. |
-| mapPropName | `function(propName: string) : string` | undefined | Use this if you need to rename a React property to match the custom element's property, attribute or event. |
-
-Note! The inferface for this object is called `RCEOptions`.
-
 ## createComponent
 
 ```ts
@@ -71,9 +62,16 @@ function createComponent<
     P extends {} = {}
 >(
     elementName: string,
-    options?: RCEOptions
+    options?: CreateComponentOptions
 ) : React.ForwardRefExoticComponent | (props: P) => React.Element
 ```
+
+###  Options
+
+| Property | Type | Default Value | Description |
+| -------- | ---- | ------------- | ----------- |
+| forwardRef | `boolean` | false | Forward the element instance ref. This is false by default in case the ref is never going to be used. |
+| mapPropName | `function(propName: string) : string` | undefined | Use this if you need to rename a React property to match the custom element's property, attribute or event. |
 
 ## useCustomElement
 
@@ -84,9 +82,15 @@ function useCustomElement<
 >(
     elementName: string,
     elementProps?: P,
-    options?: RCEOptions
+    options?: UseCustomElementOptions
 ) : [
     element: React.ReactElement,
     ref: React.MutableRefObject<HTMLElement | null>
 ]
 ```
+
+###  Options
+
+| Property | Type | Default Value | Description |
+| -------- | ---- | ------------- | ----------- |
+| mapPropName | `function(propName: string) : string` | undefined | Use this if you need to rename a React property to match the custom element's property, attribute or event. |
