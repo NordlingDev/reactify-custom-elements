@@ -1,4 +1,3 @@
-export interface RCEOptions {
-    forwardRef?: boolean;
+export interface BaseOptions {
     mapPropName?: (key: string) => string;
 }

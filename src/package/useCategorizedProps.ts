@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { RCEOptions } from "./options";
+import { BaseOptions } from "./options";
 import { toKebabCase } from "./toKebabCase";
 
 type Attrs = Record<string, string | undefined>;
@@ -56,7 +56,7 @@ function objectHasChanged<T extends {}>(a: T, b: T) {
     return false;
 }
 
-export const useCategorizedProps = <P extends Props>(elementProps: P, globalOptions: RCEOptions) => {
+export const useCategorizedProps = <P extends Props>(elementProps: P, baseOptions: BaseOptions) => {
     const attrsRef = React.useRef<Attrs>({});
     const childrenRef = React.useRef<any>();
     const eventsRef = React.useRef<Events>({});
@@ -67,7 +67,7 @@ export const useCategorizedProps = <P extends Props>(elementProps: P, globalOpti
     const newProps: Props = {};
 
     for(const originalKey in elementProps) {
-        const key = globalOptions.mapPropName?.(originalKey) ?? originalKey;
+        const key = baseOptions.mapPropName?.(originalKey) ?? originalKey;
         const value = elementProps[originalKey];
         const category = categorizeProp(key, value);
         
