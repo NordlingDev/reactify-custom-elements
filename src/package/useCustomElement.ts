@@ -1,7 +1,9 @@
 import * as React from "react";
 
-import { RCEOptions } from "./options";
+import { BaseOptions } from "./options";
 import { useCategorizedProps } from "./useCategorizedProps";
+
+export interface UseCustomElementOptions extends BaseOptions {}
 
 /**
  * A hook that returns an instance of a custom element.
@@ -13,7 +15,7 @@ import { useCategorizedProps } from "./useCategorizedProps";
 export const useCustomElement = <E extends HTMLElement = HTMLElement, P extends {} = {}>(
     elementName: string,
     elementProps?: P,
-    options: RCEOptions = {}
+    options: UseCustomElementOptions = {}
 ) : [element: React.ReactElement, ref: React.MutableRefObject<E | null>] => {
     const elementRef = React.useRef<E | null>(null);
     const initialPropsRef = React.useRef<Record<string, unknown> | null>(null);

@@ -1,8 +1,6 @@
 import { NDElement } from "./element";
 
 export class NDButtonElement extends NDElement {
-    static ndName = "input";
-
     protected refs = {
         button: document.createElement("button"),
     };

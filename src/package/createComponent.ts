@@ -1,7 +1,11 @@
 import * as React from "react";
-import { RCEOptions } from "./options";
+import { BaseOptions } from "./options";
 
 import { useCustomElement } from "./useCustomElement";
+
+export interface CreateComponentOptions extends BaseOptions {
+    forwardRef?: boolean;
+}
 
 /**
  * Creates a wrapper component for a custom element.
@@ -11,7 +15,7 @@ import { useCustomElement } from "./useCustomElement";
  */
 export const createComponent = <E extends HTMLElement = HTMLElement, P extends {} = {}>(
     elementName: string,
-    options: RCEOptions = { forwardRef: false }
+    options: CreateComponentOptions = { forwardRef: false }
 ) => {
     if(options.forwardRef) {
         return React.forwardRef<E, P>((props, ref) => {
