@@ -1,4 +1,3 @@
-import * as React from "react";
 import { render, screen } from "@testing-library/react";
 
 import { App } from "./app";
@@ -8,9 +7,9 @@ describe("App", () => {
     it("renders instances of NDElement", () => {
         render(<App />);
 
-        const buttonElement = screen.getByText(/Click me/i);
+        const buttonEl = screen.getByText(/Click me/i);
         
-        expect(buttonElement).toBeInTheDocument();
-        expect(buttonElement).toBeInstanceOf(NDElement);
+        expect(buttonEl).toBeInTheDocument();
+        expect(buttonEl).toBeInstanceOf(NDElement);
     });
 });
