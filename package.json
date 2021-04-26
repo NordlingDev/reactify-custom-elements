@@ -2,6 +2,7 @@
     "name": "reactify-custom-elements",
     "version": "0.1.0",
     "description": "A library that turns custom elements into React components.",
+    "license": "MIT",
     "keywords": [
         "react",
         "react-dom",
