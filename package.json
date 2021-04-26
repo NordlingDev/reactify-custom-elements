@@ -3,6 +3,12 @@
     "version": "0.1.0",
     "description": "A library that turns custom elements into React components.",
     "license": "MIT",
+    "homepage": "https://github.com/NordlingDev/reactify-custom-elements#readme",
+    "author": {
+        "name": "Filip Nordling",
+        "url": "https://github.com/NordlingDev"
+    },
+    "bugs": "https://github.com/NordlingDev/reactify-custom-elements/issues",
     "keywords": [
         "react",
         "react-dom",
