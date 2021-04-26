@@ -1,6 +1,6 @@
 {
     "name": "reactify-custom-elements",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A library that turns custom elements into React components.",
     "license": "MIT",
     "homepage": "https://github.com/NordlingDev/reactify-custom-elements#readme",
